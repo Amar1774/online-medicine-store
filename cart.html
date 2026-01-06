@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart - HealthPlus Pharmacy</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+{% if cart %}
+    <ul>
+        {% for item in cart %}
+            <li>{{ item.name }} - ₹{{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total: ₹{{ total_price }}</p>
+{% else %}
+    <p>Your cart is empty!</p>
+{% endif %}
+<h2>Your Cart</h2>
+<div class="cart-items">
+    {% for item in cart %}
+    <div class="cart-item">
+        <h3>{{ item.name }}</h3>
+        <p>Price: ₹{{ item.price }}</p>
+        
+       
+    </div>
+    {% endfor %}
+</div>
+
+<!-- After the cart items, show total -->
+<p><strong>Total Price: ₹{{ total_price }}</strong></p>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/products">Medicines</a>
+            <a href="/cart">Cart</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="cart">
+            {% if cart %}
+                <div class="product-list">
+                    {% for item in cart %}
+                    <div class="product-card">
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.description }}</p>
+                        <p>Price: ₹{{ item.price }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p style="text-align:center; font-size: 1.2rem;">Your cart is empty! 🛒</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 HealthPlus Pharmacy</p>
+    </footer>
+</body>
+</html>

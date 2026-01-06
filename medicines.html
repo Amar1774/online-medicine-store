@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicines - HealthPlus Pharmacy</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Available Medicines</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/products">Medicines</a>
+            <a href="/cart">Cart</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Our Medicines</h2>
+            <div class="product-list">
+                {% for product in products %}
+                <div class="product-card">
+                    <img src="/static/images/{{ product.image }}" alt="{{ product.name }}">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p>Price: ₹{{ product.price }}</p>
+                    <button onclick="addToCart({ product_id: productId })">Add to Cart</button>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 HealthPlus Pharmacy</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

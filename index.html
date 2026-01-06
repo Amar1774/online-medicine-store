@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthPlus Pharmacy</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    
+    <header>
+        <h1 style="color: red;">⛨</h1>
+        <h1> Welcome to HealthPlus Pharmacy</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/products">Medicines</a>
+            <a href="/cart">Cart</a>
+            <a href="/contact">Contact</a>
+        </nav>
+        
+        <div class="auth-buttons">
+            <a href="/login" class="button">Login</a>
+             <a href="/logout">🚪 Logout</a>
+             <a href="/profile">👤 </a>
+        </div>
+
+        <form action="/search" method="get" style="display:inline;">
+            <input type="text" name="q" placeholder="Search medicines..." required>
+            <button type="submit">Search</button>
+        </form>
+        
+    </header>
+
+    <main>
+        <section id="hero">
+            <h2 style="color: black;">​​👨‍⚕️THINK HEALTH THINK HEALTHPLUS🩺💉</h2>
+            <p style="color: black;">Fast delivery | Genuine products | Best prices</p>
+            
+                
+            </div>
+        </section>
+
+        <section id="products">
+            <h2>Featured Medicines</h2>
+            <div class="product-list">
+                {% for product in products %}
+                <div class="product-card">
+                
+                    <img src="{{product.image}}" alt="{{ product.name }}">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p>₹{{ product.price }}</p>
+                    <p>{{ product.id}}</p>
+                    <button onclick="addToCart('{{ product.id }}')">Add to Cart</button>
+                   
+
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 HealthPlus Pharmacy</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
